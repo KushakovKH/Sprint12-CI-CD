@@ -2,7 +2,7 @@ name: golang-pipeline
 on: push
 jobs:
   test:
-  needs: lint
+    needs: lint
     runs-on: ubuntu-latest
     container: golang:1.22.1
     steps:
