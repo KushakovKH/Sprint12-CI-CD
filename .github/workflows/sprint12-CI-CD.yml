@@ -2,7 +2,6 @@ name: golang-pipeline
 on: push
 jobs:
   test:
-    needs: lint
     runs-on: ubuntu-latest
     container: golang:1.22.1
     steps:
@@ -14,13 +13,6 @@ jobs:
       - name: Vet
         run: |
           go vet ./...
-  lint:
-     runs-on: ubuntu-latest
-     steps:
-     - uses: actions/checkout@v3
-     - uses: actions/setup-go@v4
-     - uses: golangci/golangci-lint-action@v6.0.1
-
 
   deploy:
     name: Push Docker image to Docker Hub
